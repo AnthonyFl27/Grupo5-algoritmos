@@ -6,5 +6,9 @@ con los siguientes datos: nombre completo, edad, síntoma principal y prioridad 
 sistema debe permitir insertar nuevos pacientes, recorrer la lista para mostrar el orden de
 atención, y eliminar a un paciente una vez atendido."""
 
-from modulos import clases
+# importe de modulos 
+from modulos import clases # clases de paciente y lista enlazada
+from modulos import metodos # metodos(insertar, mostrar, eliminar)
+
+
 
