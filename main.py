@@ -7,10 +7,10 @@ sistema debe permitir insertar nuevos pacientes, recorrer la lista para mostrar 
 atención, y eliminar a un paciente una vez atendido."""
 
 # importe de modulos 
-from modulos.clases import Lista_pacientes
-from modulos.metodos import insertar_paciente, mostrar_pacientes, eliminar_paciente
+from clases import ListaPacientes
+from metodos import insertar_paciente, mostrar_pacientes, eliminar_paciente
 
-lista = Lista_pacientes()
+lista = ListaPacientes()
 
 while True: # bucle del menu 
         print("\n=== Menú de la Clínica ===")
