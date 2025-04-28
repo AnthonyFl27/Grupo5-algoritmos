@@ -1,4 +1,4 @@
-from .clases import Paciente
+from clases import Paciente
 
 # metodo para insertar un paciente 
 def insertar_paciente(lista, nombre, edad, sintoma, prioridad): # recibe la lista y los datos del paciente 

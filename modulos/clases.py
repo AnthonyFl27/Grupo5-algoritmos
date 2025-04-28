@@ -10,6 +10,3 @@ class Paciente: # clase paciente
         # al inicio el paciente no apunta a nadie 
         self.siguiente = None 
 
-class Lista_pacientes: # clase para la lista de pacientes 
-    def __init__(self):
-        self.primero = None # None porque aun no hay pacientes 
