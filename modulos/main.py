@@ -25,9 +25,30 @@ while True: # bucle del menu
         # insertar el paciente y datos 
         if opcion == "1":
             nombre = input("ingrese nombre del paciente: ")
-            edad = int(input("ingrese la edad del paciente: "))
+            # Validar que el nombre no esté vacío
+            if not nombre.strip():
+                print("El nombre no puede estar vacío. Intente nuevamente.")
+                continue
+            # Validar que la edad sea un número entero positivo
+            try:
+                edad = int(input("ingrese la edad del paciente: "))
+                if edad <= 0:
+                    raise ValueError("La edad debe ser un número entero positivo.")
+            except ValueError as e:
+                print(f"Error: {e}. Intente nuevamente.")
+                continue
             sintoma = input("ingrese sintoma del paciente: ")
-            prioridad = int(input("ingrese la prioridad(1-5): "))
+            # Validar que el síntoma no esté vacío
+            if not sintoma.strip():
+                print("El síntoma no puede estar vacío. Intente nuevamente.")
+                continue
+            try:
+                prioridad = int(input("ingrese la prioridad(1-5): "))
+                if prioridad < 1 or prioridad > 5:
+                    raise ValueError("La prioridad debe estar entre 1 y 5.")
+            except ValueError as e:
+                print(f"Error: {e}. Intente nuevamente.")
+                continue
             insertar_paciente(lista, nombre, edad, sintoma, prioridad)
             print("el paciente a sido agregado")
 
