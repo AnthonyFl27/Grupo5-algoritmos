@@ -1,4 +1,4 @@
-from clases import NodoPaciente
+from modulos.clases import NodoPaciente
 
 def insertar_paciente(lista, nombre, edad, sintoma, prioridad):
     nuevo_paciente = NodoPaciente(nombre, edad, sintoma, prioridad)
