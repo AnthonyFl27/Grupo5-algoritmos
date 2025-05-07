@@ -2,6 +2,7 @@
 almacenan en una pila según el orden en que se procesan. Si ocurre un problema técnico, se debe
 revertir el último registro. Implementa un sistema para registrar donantes (push), eliminar el último
 (pop), y mostrar el donante actual en proceso.'''
+#Anthony King Flores Garcia 
 
 # inicializamos la clase nodo 
 class Nodo:
@@ -40,12 +41,13 @@ class Pila:
 
     # obtener la lista de los donantes 
     def items(self):
-        actual = self.cima # actual sera el nodo que este en la cima 
-        elementos = [] # variable elemento vacia 
-        while actual is not None: # si actual no es Nada
-            elementos.append(actual.dato) # agrega el dato del nodo a la lista 
-            actual = actual.siguiente # avanza al siguiente nodo en la lista 
-        return elementos # retorna los elementos, los datos de los nodos en la pila 
+        actual = self.cima # empieza desde la cima          ------------------------------------------------------------|
+        # lista de elementos vacia, almacenera todos los datos                                                          |
+        elementos = []      #                                                                                           | ----- recorre pila desde la cima hasta abajo
+        while actual is not None: # mientras que en nuestra pila actual haya datos                                      |
+            elementos.append(actual.dato) # se agrega el contenido dato del nodo actual a la lista elementos.           |
+            actual = actual.siguiente  #                    ------------------------------------------------------------|
+        return elementos # cuando ya no hay mas nodos, nos retorna la lista de elementos con todos los datos que fueron recorridos ila 
 
 # menu interactivo en consola
 def mostrar_menu():
