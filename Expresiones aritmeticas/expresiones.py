@@ -69,13 +69,15 @@ def evaluar_postfijo(expresion_postfijo):
     return pila[0]  # Resultado final
 
 # Lista de expresiones en notación infija para evaluar
-expresiones = [
-    "5 * 4 + ( 9 / 3 + 8 * 2 )",
-    "7 + 3 * ( 9 + 5 * 2 ^ 3 - 8 )",
-    "4 * ( 2 + 3 - 2 ) * ( 4 + 8 - 5 )",
-    "8 + 4 + ( ( 5 ^ 2 + 6 ) * 4 )",
-    "6 * 2 + 8 - 3 * 2 / 2"
-]
+expresiones = []
+
+# Solicitar al usuario que ingrese expresiones aritméticas
+print("Ingrese expresiones aritméticas (escriba 'fin' para terminar):")
+while True:
+    expresion = input("Expresión: ")
+    if expresion.lower() == 'fin':
+        break
+    expresiones.append(expresion)  # Agregar la expresión a la lista
 
 # Procesar cada expresión: convertir a postfijo y evaluar
 for i, expr in enumerate(expresiones, start=1):
