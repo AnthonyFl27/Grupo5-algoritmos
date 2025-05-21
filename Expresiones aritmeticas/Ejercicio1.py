@@ -1,6 +1,5 @@
 #invertir palabras en una frase 
 # Ejemplo : "Hola Mundo" -> "Mundo Hola"
-
 class Nodo:
     def __init__(self, dato):
         self.dato = dato
@@ -33,8 +32,6 @@ class Pila:
             print(actual.dato, end="\n")
             actual = actual.siguiente
         print()
-    #Definiendo el método separarParImpar
-
 
 def invertir_frase(frase):
         pila = Pila()
