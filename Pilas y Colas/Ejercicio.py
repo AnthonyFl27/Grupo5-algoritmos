@@ -11,26 +11,37 @@ la cola solo los elementos pares en su orden original.'''
 
 from Cola import Cola
 from Pila import Pila
-cola= Cola()
+
+cola = Cola()
 pila = Pila()
-# Iniciamos el programa llenando la cola con elementos que el usuario inrgesa
+
+# Ingresar elementos a la cola
 while True:
     elemento = input("Ingrese un elemento a la cola (o 'fin' para terminar): ")
     if elemento.lower() == 'fin':
         break
     cola.Insertar(elemento)
-# Procesamos la cola
-posicion = 0  # Contador de posiciones
-#recorremos la cola y transferimos elementos a la pila o los dejamos en la cola
-while cola.final is not None:  # Mientras la cola no esté vacía
-    elemento = cola.frente.dato  # Obtenemos el elemento al frente de la cola
-    if posicion % 2 == 0:  # Posición par
-        cola.Insertar(elemento)
-    else:  # Posición impar
-        pila.push(elemento)
+
+# Calcular tamaño inicial de la cola
+tamaño_inicial = 0
+actual = cola.frente
+while actual:
+    tamaño_inicial += 1
+    actual = actual.siguiente
+
+# Procesar la cola una sola vez
+posicion = 0
+for _ in range(tamaño_inicial):
+    dato = cola.Eliminar()
+    if posicion % 2 == 0:
+        cola.Insertar(dato)  # Posición par → se queda en la cola
+    else:
+        pila.push(dato)      # Posición impar → se va a la pila
     posicion += 1
-# Mostramos los resultados
-print("Elementos en la cola (posiciones pares):")
+
+# Mostrar resultados
+print("\nElementos en la cola (posiciones pares):")
 cola.Imprimir()
+
 print("Elementos en la pila (posiciones impares):")
 pila.Imprimir()

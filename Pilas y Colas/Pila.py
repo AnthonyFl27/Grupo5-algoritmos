@@ -1,32 +1,24 @@
-class Nodo:
-    def __init__(self, dato):
-        self.dato = dato
-        self.siguiente = None
-
 class Pila:
     def __init__(self):
-        self.cima = None
+        self.elementos = []
 
     def push(self, dato):
-        nuevo_nodo = Nodo(dato)
-        nuevo_nodo.siguiente = self.cima
-        self.cima = nuevo_nodo
+        self.elementos.append(dato)
 
     def pop(self):
-        if self.cima is None:
+        if not self.esta_vacia():
+            return self.elementos.pop()
+        else:
+            print("Pila vacía")
             return None
-        dato = self.cima.dato
-        self.cima = self.cima.siguiente
-        return dato
 
-    def Cima (self):
-        if self.cima is None:
-            return None
-        return self.cima.dato
-    
+    def esta_vacia(self):
+        return len(self.elementos) == 0
+
     def Imprimir(self):
-        actual = self.cima
-        while actual is not None:
-            print(actual.dato, end="\n")
-            actual = actual.siguiente
-        print()
+        if self.esta_vacia():
+            print("Pila vacía")
+        else:
+            for elem in reversed(self.elementos):
+                print(elem, end=" -> ")
+            print("None")
