@@ -1,0 +1,45 @@
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.left = None
+        self.right = None
+
+class ArbolBin:
+    def __init__(self):
+        self.raiz = None
+
+    def insertar(self, valor):
+       self.raiz = self.insertar_recursivo(self.raiz, valor)
+
+    def insertar_recursivo(self, node, valor):
+        if node is None:
+            return Nodo(valor)
+
+        if valor < node.valor:
+            node.left = self.insertar_recursivo(node.left, valor)
+        else:
+            node.right = self.insertar_recursivo(node.right, valor)
+        
+        return node
+    
+    def buscar(self, valor):
+        return self.buscar_recursivo(self.raiz, valor)
+    
+    def buscar_recursivo(self, node, valor):
+        if node is None:
+            return False
+        
+        if node.valor == valor:
+            return True
+        
+        elif valor < node.valor:
+            return self.buscar_recursivo(node.left, valor)
+        else:
+            return self.buscar_recursivo(node.right, valor)
+        
+    def inorden(self, node):
+        if node is not None:
+            self.inorden(node.left)
+            print(node.valor, end=' ')
+            self.inorden(node.right)
+    
