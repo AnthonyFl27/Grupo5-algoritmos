@@ -37,7 +37,33 @@ class ArbolBin:
             return self.buscar_recursivo(node.left, valor)
         else:
             return self.buscar_recursivo(node.right, valor)
+    
+    def elminarnodo(self, valor):
+        self.raiz = self.eliminar_recursivo(self.raiz, valor)
+    
+    def eliminar_recursivo(self, node, valor):
+        if node is None:
+            return node
         
+        if valor < node.valor:
+            node.left = self.eliminar_recursivo(node.left, valor)
+        elif valor > node.valor:
+            node.right = self.eliminar_recursivo(node.right, valor)
+        else:
+            # Nodo con un solo hijo o sin hijos
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            
+            # Nodo con dos hijos: obtener el sucesor inorden (el más pequeño del subárbol derecho)
+            min_larger_node = self.min_value_node(node.right)
+            node.valor = min_larger_node.valor
+            node.right = self.eliminar_recursivo(node.right, min_larger_node.valor)
+        
+        return node
+    
+
     def inorden(self, node):
         if node is not None:
             self.inorden(node.left)
@@ -66,11 +92,12 @@ while True:
     print("Menu de opciones:")
     print("1. Buscar un valor")
     print("2. Insertar uno o varios valores")
-    print("3. Recorrido en inorden")
-    print("4. Recorrido en preorden")
-    print("5. Recorrido en postorden")
-    print("6. Salir")
-    opcion = input("Selecciona una opción (1-6): ")
+    print("3. Eliminar un valor")
+    print("4. Recorrido en inorden")
+    print("5. Recorrido en preorden")
+    print("6. Recorrido en postorden")
+    print("7. Salir")
+    opcion = input("Selecciona una opción (1-7): ")
     
     if opcion == '1':
         valor = input("Ingresa el valor a buscar: ")
@@ -96,29 +123,39 @@ while True:
             print("Opción no válida.")
         input("Presiona Enter para continuar...")
         system("cls")
-
+    
     elif opcion == '3':
+        valor = input("Ingresa el valor a eliminar: ")
+        if arbol.buscar(valor):
+            print(f"Valor {valor} eliminado.")
+            arbol.elminarnodo(valor)
+        else:
+            print(f"El valor {valor} no se encontró en el árbol.")
+        input("Presiona Enter para continuar...")
+        system("cls")
+
+    elif opcion == '4':
         print("Recorrido en inorden:")
         arbol.inorden(arbol.raiz)
         print()
         input("Presiona Enter para continuar...")
         system("cls")
 
-    elif opcion == '4':
+    elif opcion == '5':
         print("Recorrido en preorden:")
         arbol.preorden(arbol.raiz)
         print()
         input("Presiona Enter para continuar...")
         system("cls")
 
-    elif opcion == '5':
+    elif opcion == '6':
         print("Recorrido en postorden:")
         arbol.postorden(arbol.raiz)
         print()
         input("Presiona Enter para continuar...")
         system("cls")
-
-    elif opcion == '6':
+    
+    elif opcion == '7':
         print("Saliendo del programa.")
         input("Presiona Enter para salir...")
         system("cls")
