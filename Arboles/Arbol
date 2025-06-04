@@ -54,9 +54,8 @@ class ArbolBin:
             if node.left is None:
                 return node.right
             elif node.right is None:
-                return node.left
-            
-            # Nodo con dos hijos: obtener el sucesor inorden (el más pequeño del subárbol derecho)
+                return node.left            
+            # Nodo con dos hijos: obtener el sucesor inorden
             min_larger_node = self.min_value_node(node.right)
             node.valor = min_larger_node.valor
             node.right = self.eliminar_recursivo(node.right, min_larger_node.valor)
