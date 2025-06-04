@@ -38,7 +38,8 @@ class ArbolBin:
         else:
             return self.buscar_recursivo(node.right, valor)
     
-    def elminarnodo(self, valor):
+
+    def eliminarnodo(self, valor):
         self.raiz = self.eliminar_recursivo(self.raiz, valor)
     
     def eliminar_recursivo(self, node, valor):
@@ -54,13 +55,20 @@ class ArbolBin:
             if node.left is None:
                 return node.right
             elif node.right is None:
-                return node.left            
-            # Nodo con dos hijos: obtener el sucesor inorden
+                return node.left
+            
+            # Nodo con dos hijos: obtener el sucesor inorden (el más pequeño del subárbol derecho)
             min_larger_node = self.min_value_node(node.right)
             node.valor = min_larger_node.valor
             node.right = self.eliminar_recursivo(node.right, min_larger_node.valor)
-        
+
         return node
+
+    def min_value_node(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current
     
 
     def inorden(self, node):
